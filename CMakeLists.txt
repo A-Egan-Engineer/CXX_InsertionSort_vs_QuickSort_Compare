@@ -3,6 +3,6 @@ project(CXX_InsertionSort_vs_QuickSort_Compare)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(CXX_InsertionSort_vs_QuickSort_Compare main.cpp
-        Headers/InsertionSort.h
+add_executable(CXX_InsertionSort_vs_QuickSort_Compare
+        main.cpp
         "CPP Files/InsertionSort.cpp")
