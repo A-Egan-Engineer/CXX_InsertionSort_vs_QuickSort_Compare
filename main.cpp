@@ -22,9 +22,11 @@ int main() {
     }
 
     int count;
+    file1 >> count;
 
     cout << endl;
-    file1 >> count;
+    cout << "Testing execution time of insertion sort vs quick sort using unsorted data set..." << endl;
+    sleep(3);
     cout << endl;
     cout << "Total count of integers in .txt: " << count << endl;
     cout << endl;
@@ -83,8 +85,8 @@ int main() {
         return 0;
     }
 
-    cout << endl;
     file2 >> count;
+
     cout << endl;
     cout << "Total count of integers in .txt: " << count << endl;
     cout << endl;
@@ -126,7 +128,5 @@ int main() {
         cout << arr2[i] << endl;
     }
 
-    cout << endl;
-    cout << "Quick Sort Execution Time: " << quickSortTime << endl;
     return 0;
 };
