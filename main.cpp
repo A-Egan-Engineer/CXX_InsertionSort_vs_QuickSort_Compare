@@ -128,5 +128,25 @@ int main() {
         cout << arr2[i] << endl;
     }
 
+    cout << endl;
+    cout << "Quick Sort Execution Time: " << quickSortTime << endl;
+    cout << endl;
+
+    cout << "Insertion Sort Time: " << insertionSortTime << " vs" << " Quick Sort Time: " << quickSortTime << endl;
+    cout << endl;
+    cout << "Quick sort algorithm executes faster with unsorted data set!" << endl;
+    sleep(5);
+
+    ifstream file3("Input Data/a2_task1_input2.txt");
+    if (file3.is_open()) {
+        cout << "File opened correctly" << endl;
+    }
+    if (!file3.is_open()) {
+        cout << "Error opening file" << endl;
+    }
+
+    file3 >> count;
+
+
     return 0;
 };
