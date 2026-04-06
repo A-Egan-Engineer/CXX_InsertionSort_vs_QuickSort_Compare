@@ -25,8 +25,8 @@ int main() {
     file1 >> count;
 
     cout << endl;
-    cout << "Testing execution time of insertion sort vs quick sort using unsorted data set..." << endl;
-    sleep(3);
+    cout << "Testing execution time of insertion sort vs quick sort using the same unsorted data set..." << endl;
+    sleep(5);
     cout << endl;
     cout << "Total count of integers in .txt: " << count << endl;
     cout << endl;
@@ -68,7 +68,7 @@ int main() {
         cout << arr1[i] << endl;
     }
     cout << endl;
-    cout << "Insertion Sort Execution Time: " << insertionSortTime.count() << " ms" << endl;
+    cout << "Insertion Sort Execution Time: " << insertionSortTime << endl;
 
     sleep(3);
 
@@ -98,6 +98,9 @@ int main() {
         file2 >> arr2[i];
     }
     file2.close();
+
+    cout << "The data is arranged as follows: " << endl;
+    sleep(3);
 
     for (int i = 0; i < count; i++) {
         cout << arr2[i] << endl;
@@ -134,8 +137,15 @@ int main() {
 
     cout << "Insertion Sort Time: " << insertionSortTime << " vs" << " Quick Sort Time: " << quickSortTime << endl;
     cout << endl;
-    cout << "Quick sort algorithm executes faster with unsorted data set!" << endl;
+    if (insertionSortTime < quickSortTime) {
+        cout << "Insertion sort algorithm executes faster with unsorted data set!" << endl;
+    }
+    else {
+        cout << "Quick sort algorithm executes faster with unsorted data set!" << endl;
+    }
     sleep(5);
+
+    cout << endl;
 
     ifstream file3("Input Data/a2_task1_input2.txt");
     if (file3.is_open()) {
@@ -147,6 +157,124 @@ int main() {
 
     file3 >> count;
 
+    cout << endl;
+    cout << "Testing execution time of insertion sort vs quick sort using the same nearly sorted data set..." << endl;
+    sleep(5);
+    cout << endl;
+    cout << "Total number of integers in .txt " << count << endl;
+
+    int* arr3 = new int[count];
+
+    for (int i = 0; i < count; i++) {
+        file3 >> arr3[i];
+    }
+    file3.close();
+
+    cout << endl;
+    cout << "The data is arranged as follows: " << endl;
+    sleep(3);
+
+    for (int i = 0; i < count; i++) {
+        cout << arr3[i] << endl;
+    }
+
+    cout << endl;
+    cout << "Insertion Sort Executing in 3..." << endl;
+    sleep(1);
+    cout << endl;
+    cout << "2..." << endl;
+    sleep(1);
+    cout << endl;
+    cout << "1..." << endl;
+    sleep(1);
+    cout << endl;
+    cout << "Insertion Sort Executing!" << endl;
+    cout << endl;
+
+    auto start3 = Clock::now();
+    insertionSort(arr3, count);
+    auto end3 = Clock::now();
+    auto insertionSortTime2 = chrono::duration_cast<ms>(end3 - start3);
+    cout << endl;
+    for (int i = 0; i < count; i++) {
+        cout << arr3[i] << endl;
+    }
+    cout << endl;
+    cout << "Insertion Sort Execution Time: " << insertionSortTime2 << endl;
+
+    sleep(3);
+
+    delete [] arr3;
+
+    cout << endl;
+
+    ifstream file4("Input Data/a2_task1_input2.txt");
+    if (file4.is_open()) {
+        cout << "File opened correctly" << endl;
+    }
+    if (!file4.is_open()) {
+        cout << "Error opening file" << endl;
+    }
+
+    file4 >> count;
+
+    cout << endl;
+    cout << "Total count of integers in .txt " << count << endl;
+    cout << endl;
+    sleep(3);
+
+    vector<int> arr4(count);
+
+    for (int i = 0; i < count; i++) {
+        file4 >> arr4[i];
+    }
+    file4.close();
+
+    cout << "The data is arranged as follows: " << endl;
+    sleep(3);
+
+    for (int i = 0; i < count; i++) {
+        cout << arr4[i] << endl;
+    }
+
+    cout << endl;
+
+    cout << "Quick Sort Executing in 3..." << endl;
+    sleep(1);
+    cout << endl;
+    cout << "2..." << endl;
+    sleep(1);
+    cout << endl;
+    cout << "1..." << endl;
+    sleep(1);
+    cout << endl;
+    cout << "Quick Sort Executing!" << endl;
+    cout << endl;
+
+    n = arr4.size();
+
+    auto start4 = Clock::now();
+    quicksort(arr4, 0, n - 1);
+    auto end4 = Clock::now();
+    auto quickSortTime2 = chrono::duration_cast<ms>(end2 - start2);
+    cout << endl;
+    for (int i = 0; i < count; i++) {
+        cout << arr4[i] << endl;
+    }
+
+    cout << endl;
+    cout << "Quick Sort Execution Time: " << quickSortTime2 << endl;
+    cout << endl;
+
+    cout << "Insertion Sort Time: " << insertionSortTime2 << " vs" << " Quick Sort Time: " << quickSortTime2 << endl;
+    cout << endl;
+    if (insertionSortTime2 < quickSortTime2) {
+        cout << "Insertion sort algorithm executes faster with unsorted data set!" << endl;
+    }
+    else {
+        cout << "Quick sort algorithm executes faster with unsorted data set!" << endl;
+    }
+    sleep(5);
 
     return 0;
 };
