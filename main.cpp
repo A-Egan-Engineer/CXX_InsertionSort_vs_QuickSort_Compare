@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Headers/InsertionSort.h"
+#include "Headers/QuickSort.h"
 #include <fstream>
 #include <chrono>
 #include <unistd.h>
@@ -35,6 +36,9 @@ int main() {
     }
     file1.close();
 
+    cout << "The data is arranged as follows: " << endl;
+    sleep(3);
+
     for (int i = 0; i < count; i++) {
         cout << arr1[i] << endl;
     }
@@ -56,17 +60,21 @@ int main() {
     auto start1 = Clock::now();
     insertionSort(arr1, count);
     auto end1 = Clock::now();
-    auto insertionTime = chrono::duration_cast<ms>(end1 - start1);
+    auto insertionSortTime = chrono::duration_cast<ms>(end1 - start1);
     cout << endl;
     for (int i = 0; i < count; i++) {
         cout << arr1[i] << endl;
     }
     cout << endl;
-    cout << "Insertion Sort Execution Time: " << insertionTime.count() << " ms" << endl;
+    cout << "Insertion Sort Execution Time: " << insertionSortTime.count() << " ms" << endl;
+
+    sleep(3);
 
     delete [] arr1;
 
-    ifstream file2("Input Data/a2_task2_input1.txt");
+    cout << endl;
+
+    ifstream file2("Input Data/a2_task1_input1.txt");
     if (file2.is_open()) {
         cout << "File opened correctly" << endl;
     }
@@ -80,8 +88,9 @@ int main() {
     cout << endl;
     cout << "Total count of integers in .txt: " << count << endl;
     cout << endl;
+    sleep(3);
 
-    int* arr2 = new int[count];
+    vector<int> arr2(count);
 
     for (int i = 0; i < count; i++) {
         file2 >> arr2[i];
@@ -106,7 +115,18 @@ int main() {
     cout << "Quick Sort Executing!" << endl;
     cout << endl;
 
-    auto start2 = Clock::now();
+    int n = arr2.size();
 
+    auto start2 = Clock::now();
+    quicksort(arr2, 0, n - 1);
+    auto end2 = Clock::now();
+    auto quickSortTime = chrono::duration_cast<ms>(end2 - start2);
+    cout << endl;
+    for (int i = 0; i < count; i++) {
+        cout << arr2[i] << endl;
+    }
+
+    cout << endl;
+    cout << "Quick Sort Execution Time: " << quickSortTime << endl;
     return 0;
 };

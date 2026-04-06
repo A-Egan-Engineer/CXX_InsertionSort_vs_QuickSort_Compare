@@ -7,6 +7,6 @@ using namespace std;
 
 void insertionSort(int arr[], int n);
 
-void printArray(int arr[], int n);
+void printArray(int vec[], int n);
 
 #endif //CXX_INSERTIONSORT_VS_QUICKSORT_COMPARE_INSERTIONSORT_H
