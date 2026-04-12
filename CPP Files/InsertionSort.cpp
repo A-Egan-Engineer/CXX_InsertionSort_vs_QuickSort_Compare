@@ -2,7 +2,9 @@
 #include "../Headers/InsertionSort.h"
 
 using namespace std;
-
+// Insertion sort function which sorts a data set
+// by iteratively inserting the unordered into the
+// correct position within the array.
 void insertionSort(int arr[], int n) {
     for (int i = 1 ; i < n ; i++) {
         int key = arr[i];
@@ -16,6 +18,8 @@ void insertionSort(int arr[], int n) {
     }
 }
 
+// Function to iterate through the array, and
+// call out the data stored in the array.
 void printArray(int arr[], int n) {
     for (int i = 0 ; i < n ; i++) {
         cout << arr[i] << " ";

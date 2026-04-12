@@ -7,11 +7,13 @@
 
 using namespace std;
 
+// Creates clock to time execution time of sorts.
 typedef chrono::high_resolution_clock Clock;
 typedef chrono::milliseconds ms;
 
 int main() {
 
+    // Opens txt file that contains unsorted data set.
     ifstream file1("Input Data/a2_task1_input1.txt");
     if (file1.is_open()) {
         cout << "File opened correctly" << endl;
@@ -21,6 +23,7 @@ int main() {
         return 0;
     }
 
+    // Integer to store count of data in file.
     int count;
     file1 >> count;
 
@@ -31,8 +34,10 @@ int main() {
     cout << "Total count of integers in .txt: " << count << endl;
     cout << endl;
 
+    // Initialises a dynamic array to store data equal to file count.
     int* arr1 = new int[count];
 
+    // Stores data from file into dynamic array & closes file.
     for (int i = 0; i < count; i++) {
         file1 >> arr1[i];
     }
@@ -41,6 +46,7 @@ int main() {
     cout << "The data is arranged as follows: " << endl;
     sleep(3);
 
+    // Prints array contents .
     for (int i = 0; i < count; i++) {
         cout << arr1[i] << endl;
     }
@@ -59,6 +65,8 @@ int main() {
     cout << "Insertion Sort Executing!" << endl;
     cout << endl;
 
+    // Starts clock, calls insertion sort function and prints sorted array
+    // with execution time.
     auto start1 = Clock::now();
     insertionSort(arr1, count);
     auto end1 = Clock::now();
@@ -72,6 +80,7 @@ int main() {
 
     sleep(3);
 
+    // Deletes array data from heap manually to avoid leak
     delete [] arr1;
 
     cout << endl;
@@ -92,6 +101,9 @@ int main() {
     cout << endl;
     sleep(3);
 
+    // An STL vector is used to store file data. Safer as once the
+    // vector is out of scope it automatically clears data from
+    // the heap, avoiding accidental memory leakage.
     vector<int> arr2(count);
 
     for (int i = 0; i < count; i++) {
@@ -120,8 +132,11 @@ int main() {
     cout << "Quick Sort Executing!" << endl;
     cout << endl;
 
-    int n = arr2.size();
+    // Sets n to size of array
+    int n = count;
 
+    // Clock starts, calls quicksort algorithm, stops timer and prints
+    // the ordered array.
     auto start2 = Clock::now();
     quicksort(arr2, 0, n - 1);
     auto end2 = Clock::now();
@@ -131,6 +146,8 @@ int main() {
         cout << arr2[i] << endl;
     }
 
+    // Calls out quicksort execution time, compares the insertion sort time vs quicksort time and prints
+    // out which algorithm sorted the data faster based on the times using an if else statement.
     cout << endl;
     cout << "Quick Sort Execution Time: " << quickSortTime << endl;
     cout << endl;
@@ -145,8 +162,11 @@ int main() {
     }
     sleep(5);
 
+    // No need to delete vector array from heap as it is handled automatically
+
     cout << endl;
 
+    // Opens the nearly sorted txt file for use.
     ifstream file3("Input Data/a2_task1_input2.txt");
     if (file3.is_open()) {
         cout << "File opened correctly" << endl;
@@ -155,6 +175,8 @@ int main() {
         cout << "Error opening file" << endl;
     }
 
+    // Uses original count int to store total number
+    // of data in file using line one.
     file3 >> count;
 
     cout << endl;
@@ -163,6 +185,8 @@ int main() {
     cout << endl;
     cout << "Total number of integers in .txt " << count << endl;
 
+    // A third dynamic array created to hold
+    // data from nearly sorted data set.
     int* arr3 = new int[count];
 
     for (int i = 0; i < count; i++) {
@@ -191,6 +215,9 @@ int main() {
     cout << "Insertion Sort Executing!" << endl;
     cout << endl;
 
+    // Clock starts, insertion sort is called on third array storing nearly
+    // sorted data, clock ends, ordered array is printed and execution time
+    // is printed.
     auto start3 = Clock::now();
     insertionSort(arr3, count);
     auto end3 = Clock::now();
@@ -204,6 +231,7 @@ int main() {
 
     sleep(3);
 
+    // Deletes array data from heap manually to avoid leak
     delete [] arr3;
 
     cout << endl;
@@ -223,6 +251,7 @@ int main() {
     cout << endl;
     sleep(3);
 
+    // Using vector again for final array
     vector<int> arr4(count);
 
     for (int i = 0; i < count; i++) {
@@ -251,8 +280,10 @@ int main() {
     cout << "Quick Sort Executing!" << endl;
     cout << endl;
 
-    n = arr4.size();
+    // Reusing int n for array size
+    n = count;
 
+    // Starts clock, calls quicksort function, ends timer and prints ordered array.
     auto start4 = Clock::now();
     quicksort(arr4, 0, n - 1);
     auto end4 = Clock::now();
@@ -262,6 +293,8 @@ int main() {
         cout << arr4[i] << endl;
     }
 
+    // Calls out quicksort execution time, compares insertion sort vs quicksort time and prints
+    // sorting algorith that has faster execution time based on time using if else statement.
     cout << endl;
     cout << "Quick Sort Execution Time: " << quickSortTime2 << endl;
     cout << endl;

@@ -4,6 +4,8 @@
 
 using namespace std;
 
+// Header file to intialise partition
+// function and quicksort function.
 int partition(vector<int>& arr, int low, int high);
 
 void quicksort(vector<int>& arr, int low, int high);

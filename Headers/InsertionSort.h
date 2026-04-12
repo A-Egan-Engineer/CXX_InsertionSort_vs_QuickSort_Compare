@@ -5,6 +5,8 @@
 
 using namespace std;
 
+// Header file to intialise insertion sort
+// function and array printing function.
 void insertionSort(int arr[], int n);
 
 void printArray(int vec[], int n);
